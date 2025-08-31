@@ -3,7 +3,9 @@ import time
 import sys
 import json
 from pathlib import Path
+from rich.console import Console
 
+console = Console()
 SESSIONS_FILE = Path("sessions.json")
 
 def load_sessions():
@@ -20,16 +22,15 @@ def countdown(minutes: int, label: str):
     total_seconds = minutes * 60
     while total_seconds > 0:
         mins, secs = divmod(total_seconds, 60)
-        sys.stdout.write(f"\r{label} ⏳ {mins:02d}:{secs:02d} restantes")
-        sys.stdout.flush()
+        console.print(f"{label} ⏳ [bold green]{mins:02d}:{secs:02d}[/]", end="\r")
         time.sleep(1)
         total_seconds -= 1
-    print(f"\n✅ {label} concluído!")
+    console.print(f"\n✅ [bold cyan]{label} concluído![/]")
 
 def pomodoro_cycle():
-    print("🍅 Iniciando ciclo de Foco (25min)")
+    console.print("[bold yellow]🍅 Iniciando ciclo de Foco (25min)[/]")
     countdown(25, "Foco")
-    print("😌 Pausa curta (5min)")
+    console.print("[bold blue]😌 Pausa curta (5min)[/]")
     countdown(5, "Descanso")
 
     sessions = load_sessions()
@@ -50,10 +51,10 @@ def main():
         pomodoro_cycle()
     elif args.command == "status":
         sessions = load_sessions()
-        print(f"📊 Ciclos concluídos: {sessions['completed']}")
+        console.print(f"📊 Ciclos concluídos: [bold green]{sessions['completed']}[/]")
     elif args.command == "reset":
         save_sessions({"completed": 0})
-        print("🔄 Histórico resetado!")
+        console.print("[bold red]🔄 Histórico resetado![/]")
     else:
         parser.print_help()
 
