@@ -84,3 +84,14 @@ A técnica Pomodoro é um método de gerenciamento de tempo que usa intervalos c
 - Interface de linha de comando intuitiva
 - Feedback visual e sonoro
 - Tratamento de erros robusto
+
+## 🚀 Próximos Passos
+
+- [ ] **Timers Personalizáveis**: Permitir configurar duração de foco e pausas
+- [ ] **Pausas Longas**: Implementar pausa longa a cada 4 ciclos
+- [ ] **Configuração por Arquivo**: Salvar preferências de tempo em config.json
+- [ ] **Estatísticas Detalhadas**: Histórico por dia/semana/mês
+- [ ] **Temas de Som**: Diferentes alertas sonoros
+- [ ] **Modo Silencioso**: Desabilitar notificações
+- [ ] **Integração com Calendário**: Sincronizar com Google Calendar/Outlook
+- [ ] **Relatórios de Produtividade**: Gráficos e métricas de desempenho
